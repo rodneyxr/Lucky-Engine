@@ -13,7 +13,7 @@ public class View extends JFrame {
 	private GameScreen gameScreen;
 
 	public View(Game game) {
-		super("Lucky Steps - In Development");
+		super("Lucky Engine - In Development");
 		gameScreen = new GameScreen(game);
 		this.add(gameScreen);
 	}
@@ -32,7 +32,7 @@ public class View extends JFrame {
 		gameScreen.repaint();
 	}
 
-	public void registerListeners(Controller controller) {
+	public void registerListeners(Input controller) {
 		gameScreen.addKeyListener(controller);
 	}
 }

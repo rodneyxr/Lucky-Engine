@@ -5,15 +5,11 @@ import java.awt.Graphics;
 
 import engine.Game;
 
-public class LuckySteps extends Game {
+public class TestApp extends Game {
 
 	@Override
 	public void create() {
-		System.out.println("+==========================+");
-		System.out.println("| Program: Lucky Steps     |");
-		System.out.println("| Author: Rodney Rodriguez |");
-		System.out.println("| Date: January 2, 2015    |");
-		System.out.println("+==========================+");
+		// LuckyEngine.setLogFPS(true);
 	}
 
 	@Override
@@ -29,7 +25,7 @@ public class LuckySteps extends Game {
 	}
 
 	public static void main(String args[]) {
-		new LuckySteps();
+		new TestApp();
 	}
 
 }

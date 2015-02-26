@@ -4,31 +4,39 @@ import java.awt.Graphics;
 
 import javax.swing.JFrame;
 
-import core.mvc.Controller;
+import core.mvc.Input;
 import core.mvc.Model;
 import core.mvc.View;
 
 public abstract class Game implements EngineComponent {
 
-	protected Model model;
-	protected View view;
-	protected Controller controller;
+	private static LuckyEngine luckyEngine = new LuckyEngine();
 
-	protected boolean running;
+	/**
+	 * MVC
+	 */
+	private Model model;
+	private View view;
+	private Input input;
+
+	/**
+	 * GameLoop
+	 */
+	private boolean running;
 
 	public Game() {
-		create();
 		init();
+		create();
 	}
 
 	public void init() {
 		// setup MVC
 		model = new Model();
 		view = new View(this);
-		controller = new Controller(model, view);
+		input = new Input(model, view);
 
 		// register listeners
-		view.registerListeners(controller);
+		view.registerListeners(input);
 
 		view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		view.setSize(800, 800);
@@ -49,9 +57,18 @@ public abstract class Game implements EngineComponent {
 	@Override
 	public void run() {
 		while (running) {
-			update(0);
+			luckyEngine.tick();
+			sleep(16);
+			update(LuckyEngine.getDeltaTime());
 			view.draw(); // this will call render
 		}
 	}
 
+	private void sleep(long millis) {
+		try {
+			Thread.sleep(millis);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
 }
