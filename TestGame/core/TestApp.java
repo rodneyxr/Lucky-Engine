@@ -4,14 +4,11 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 import com.rodneyxr.luckyengine.Application;
-import com.rodneyxr.luckyengine.LuckyEngine;
 
 public class TestApp extends Application {
 
 	@Override
 	public void create() {
-		System.out.println("Create");
-		LuckyEngine.setLogFPS(true);
 	}
 
 	@Override
@@ -24,5 +21,9 @@ public class TestApp extends Application {
 		g.drawRect(0, 0, 100, 100);
 		g.setColor(Color.GREEN);
 		g.fillRect(0, 0, 100, 100);
+	}
+
+	public static void main(String[] args) {
+		new TestApp();
 	}
 }

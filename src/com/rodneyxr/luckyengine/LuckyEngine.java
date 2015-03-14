@@ -14,10 +14,8 @@ import com.rodneyxr.luckyengine.mvc.View;
  * @author Rodney
  *
  */
-public class LuckyEngine implements Engine {
+public abstract class LuckyEngine implements Engine {
 
-	private static LuckyEngine instance;
-	
 	/**
 	 * MVC
 	 */
@@ -125,33 +123,21 @@ public class LuckyEngine implements Engine {
 
 	@Override
 	public void run() {
-		System.out.println("started");
 		while (running) {
 			tick();
 			update(LuckyEngine.getDeltaTime());
 			view.draw(); // this will call render
 			sleep(16);
-			//System.out.println("running");
 		}
-		//System.out.println("finished");
 	}
 
 	@Override
-	public void create() {
-	}
+	public abstract void create();
 
 	@Override
-	public void update(float delta) {
-	}
+	public abstract void update(float delta);
 
 	@Override
-	public void render(Graphics g) {
-	}
-
-	public static void main(String args[]) {
-		System.out.println("LuckyEngine: Main");
-		instance = new LuckyEngine();
-	}
-
+	public abstract void render(Graphics g);
 
 }
