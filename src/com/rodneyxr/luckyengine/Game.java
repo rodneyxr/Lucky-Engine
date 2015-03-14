@@ -1,12 +1,12 @@
-package engine;
+package com.rodneyxr.luckyengine;
 
 import java.awt.Graphics;
 
 import javax.swing.JFrame;
 
-import core.mvc.Input;
-import core.mvc.Model;
-import core.mvc.View;
+import com.rodneyxr.luckyengine.mvc.Input;
+import com.rodneyxr.luckyengine.mvc.Model;
+import com.rodneyxr.luckyengine.mvc.View;
 
 public abstract class Game implements EngineComponent {
 

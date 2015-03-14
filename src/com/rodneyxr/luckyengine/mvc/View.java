@@ -1,11 +1,11 @@
-package core.mvc;
+package com.rodneyxr.luckyengine.mvc;
 
 import java.awt.Graphics;
 
 import javax.swing.JFrame;
 
-import core.GameScreen;
-import engine.Game;
+import com.rodneyxr.luckyengine.Game;
+import com.rodneyxr.luckyengine.GameScreen;
 
 public class View extends JFrame {
 	private static final long serialVersionUID = 1L;

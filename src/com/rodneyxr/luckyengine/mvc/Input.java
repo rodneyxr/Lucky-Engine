@@ -1,4 +1,4 @@
-package core.mvc;
+package com.rodneyxr.luckyengine.mvc;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;

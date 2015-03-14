@@ -3,13 +3,15 @@ package core;
 import java.awt.Color;
 import java.awt.Graphics;
 
-import engine.Game;
+import com.rodneyxr.luckyengine.Game;
+import com.rodneyxr.luckyengine.LuckyEngine;
 
 public class TestApp extends Game {
 
 	@Override
 	public void create() {
-		// LuckyEngine.setLogFPS(true);
+		System.out.println("Create");
+		LuckyEngine.setLogFPS(true);
 	}
 
 	@Override

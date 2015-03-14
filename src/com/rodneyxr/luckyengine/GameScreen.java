@@ -1,11 +1,9 @@
-package core;
+package com.rodneyxr.luckyengine;
 
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
-
-import engine.Game;
 
 /**
  * This class will handle the buffering and drawing to the gameScreen. It will

@@ -1,4 +1,4 @@
-package engine;
+package com.rodneyxr.luckyengine;
 
 /**
  * This class will handle all global operations such as FPS and logging.

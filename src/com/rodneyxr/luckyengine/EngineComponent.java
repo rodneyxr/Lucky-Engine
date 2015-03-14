@@ -1,4 +1,4 @@
-package engine;
+package com.rodneyxr.luckyengine;
 
 import java.awt.Graphics;
 
