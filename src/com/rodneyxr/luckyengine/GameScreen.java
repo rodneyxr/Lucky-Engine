@@ -16,14 +16,14 @@ import java.awt.Image;
 public class GameScreen extends Canvas {
 	private static final long serialVersionUID = 1L;
 
-	private Game game; // this class will pass the Graphics to render method
+	private LuckyEngine luckyEngine; // this class will pass the Graphics to render method
 
 	/* Double Buffer */
 	private Image dbImage;
 	private Graphics dbg;
 
-	public GameScreen(Game game) {
-		this.game = game;
+	public GameScreen(LuckyEngine instance) {
+		this.luckyEngine = instance;
 		this.setBackground(Color.BLACK);
 		this.setVisible(true);
 		this.setFocusable(true);
@@ -32,7 +32,7 @@ public class GameScreen extends Canvas {
 	public void update(Graphics g) {
 		dbImage = createImage(getWidth(), getHeight());
 		dbg = dbImage.getGraphics();
-		game.render(dbg);
+		luckyEngine.render(dbg);
 		g.drawImage(dbImage, 0, 0, this);
 	}
 

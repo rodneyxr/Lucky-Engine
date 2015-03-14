@@ -3,10 +3,10 @@ package core;
 import java.awt.Color;
 import java.awt.Graphics;
 
-import com.rodneyxr.luckyengine.Game;
+import com.rodneyxr.luckyengine.Application;
 import com.rodneyxr.luckyengine.LuckyEngine;
 
-public class TestApp extends Game {
+public class TestApp extends Application {
 
 	@Override
 	public void create() {
@@ -25,9 +25,4 @@ public class TestApp extends Game {
 		g.setColor(Color.GREEN);
 		g.fillRect(0, 0, 100, 100);
 	}
-
-	public static void main(String args[]) {
-		new TestApp();
-	}
-
 }

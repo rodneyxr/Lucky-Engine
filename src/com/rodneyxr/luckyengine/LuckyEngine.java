@@ -1,12 +1,34 @@
 package com.rodneyxr.luckyengine;
 
+import java.awt.Graphics;
+
+import javax.swing.JFrame;
+
+import com.rodneyxr.luckyengine.mvc.Input;
+import com.rodneyxr.luckyengine.mvc.Model;
+import com.rodneyxr.luckyengine.mvc.View;
+
 /**
  * This class will handle all global operations such as FPS and logging.
  * 
  * @author Rodney
  *
  */
-public class LuckyEngine {
+public class LuckyEngine implements Engine {
+
+	private static LuckyEngine instance;
+	
+	/**
+	 * MVC
+	 */
+	private Model model;
+	private View view;
+	private Input input;
+
+	/**
+	 * Loop
+	 */
+	private boolean running;
 
 	/**
 	 * FPS
@@ -28,6 +50,27 @@ public class LuckyEngine {
 		System.out.println("| Date: January 2, 2015    |");
 		System.out.println("+==========================+");
 		logFPS = false;
+		init();
+		create();
+	}
+
+	public void init() {
+		// setup MVC
+		model = new Model();
+		view = new View(this);
+		input = new Input(model, view);
+
+		// register listeners
+		view.registerListeners(input);
+
+		view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		view.setSize(800, 800);
+		view.setLocationRelativeTo(null);
+		view.setResizable(false);
+		view.setVisible(true);
+
+		running = true;
+		new Thread(this).start();
 	}
 
 	/**
@@ -71,5 +114,44 @@ public class LuckyEngine {
 				System.out.printf("FPS: %d\n", fps);
 		}
 	}
+
+	private void sleep(long millis) {
+		try {
+			Thread.sleep(millis);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void run() {
+		System.out.println("started");
+		while (running) {
+			tick();
+			update(LuckyEngine.getDeltaTime());
+			view.draw(); // this will call render
+			sleep(16);
+			//System.out.println("running");
+		}
+		//System.out.println("finished");
+	}
+
+	@Override
+	public void create() {
+	}
+
+	@Override
+	public void update(float delta) {
+	}
+
+	@Override
+	public void render(Graphics g) {
+	}
+
+	public static void main(String args[]) {
+		System.out.println("LuckyEngine: Main");
+		instance = new LuckyEngine();
+	}
+
 
 }

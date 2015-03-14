@@ -4,17 +4,18 @@ import java.awt.Graphics;
 
 import javax.swing.JFrame;
 
-import com.rodneyxr.luckyengine.Game;
+import com.rodneyxr.luckyengine.Application;
 import com.rodneyxr.luckyengine.GameScreen;
+import com.rodneyxr.luckyengine.LuckyEngine;
 
 public class View extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	private GameScreen gameScreen;
 
-	public View(Game game) {
+	public View(LuckyEngine instance) {
 		super("Lucky Engine - In Development");
-		gameScreen = new GameScreen(game);
+		gameScreen = new GameScreen(instance);
 		this.add(gameScreen);
 	}
 
