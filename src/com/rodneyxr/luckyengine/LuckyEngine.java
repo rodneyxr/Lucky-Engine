@@ -16,6 +16,8 @@ import com.rodneyxr.luckyengine.mvc.View;
  */
 public abstract class LuckyEngine implements Engine {
 
+	private static boolean debug = true;
+
 	/**
 	 * MVC
 	 */
@@ -94,6 +96,15 @@ public abstract class LuckyEngine implements Engine {
 	 */
 	public static void setLogFPS(boolean logFPS) {
 		LuckyEngine.logFPS = logFPS;
+	}
+
+	public static void log(String msg) {
+		if (debug)
+			System.out.println(msg);
+	}
+
+	public static void log(String format, Object... args) {
+		log(String.format(format, args));
 	}
 
 	/**

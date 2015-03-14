@@ -9,6 +9,7 @@ public class TestApp extends Application {
 
 	@Override
 	public void create() {
+		log("create");
 	}
 
 	@Override
