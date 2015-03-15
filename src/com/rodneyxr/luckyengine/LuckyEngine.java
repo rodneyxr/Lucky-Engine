@@ -17,6 +17,8 @@ import com.rodneyxr.luckyengine.mvc.View;
 public abstract class LuckyEngine implements Engine {
 
 	private static boolean debug = true;
+	public static final LuckyLogger LOGGER = new LuckyLogger("LuckyEngine", true);
+	public static final LuckyLogger DEVLOGGER = new LuckyLogger("DEBUG", debug);
 
 	/**
 	 * MVC
@@ -51,7 +53,6 @@ public abstract class LuckyEngine implements Engine {
 		System.out.println("+==========================+");
 		logFPS = false;
 		init();
-		create();
 	}
 
 	public void init() {
@@ -69,8 +70,14 @@ public abstract class LuckyEngine implements Engine {
 		view.setResizable(false);
 		view.setVisible(true);
 
+		create();
+
 		running = true;
-		new Thread(this).start();
+		//run();
+		Thread gameThread = new Thread(this);
+		gameThread.setPriority(Thread.MAX_PRIORITY);
+		gameThread.start();
+		//new Thread(this).start();
 	}
 
 	/**
@@ -98,22 +105,23 @@ public abstract class LuckyEngine implements Engine {
 		LuckyEngine.logFPS = logFPS;
 	}
 
-	public static void log(String msg) {
-		if (debug)
-			System.out.println(msg);
-	}
-
-	public static void log(String format, Object... args) {
-		log(String.format(format, args));
+	/**
+	 * If true, the Lucky Engine will enable debug output to stdout
+	 * 
+	 * @param debug
+	 */
+	public static void setDebug(boolean debug) {
+		LuckyEngine.debug = debug;
+		DEVLOGGER.setEnabled(debug);
 	}
 
 	/**
 	 * Performs calculations for the fps
 	 */
 	public void tick() {
-		delta = (System.nanoTime() - tTick);
+		delta = (System.nanoTime() - tTick) / 1000000000f;
 		tTick = System.nanoTime();
-		if (System.nanoTime() - tSec < 1000000000) {
+		if (System.nanoTime() - tSec < 1000000000f) {
 			ticks++;
 		} else {
 			tSec = tTick;
@@ -134,6 +142,7 @@ public abstract class LuckyEngine implements Engine {
 
 	@Override
 	public void run() {
+		tTick = System.nanoTime();
 		while (running) {
 			tick();
 			update(LuckyEngine.getDeltaTime());
