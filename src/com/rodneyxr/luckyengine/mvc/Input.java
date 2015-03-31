@@ -26,7 +26,7 @@ public class Input implements KeyListener {
 
 	@Override
 	public void keyTyped(KeyEvent k) {
-		 System.out.printf("KeyTyped: '%c'\n", k.getKeyChar());
+		System.out.printf("KeyTyped: '%c'\n", k.getKeyChar());
 	}
 
 }
