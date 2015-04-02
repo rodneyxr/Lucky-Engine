@@ -14,14 +14,16 @@ public class TestApp extends Application {
 
 	@Override
 	public void create() {
-		ball1 = new Ball(0f, 0f, 25f, 25f, 50f, Color.RED);
-		ball2 = new Ball(800f, 800f, -25f, -25f, 50f, Color.BLUE);
+		ball1 = new Ball(0f, 0f, 100f, 100f, 50f, Color.RED);
+		ball2 = new Ball(800f, 800f, -100f, -100f, 50f, Color.BLUE);
 	}
 
 	@Override
 	public void update(float delta) {
 		ball1.update(delta);
 		ball2.update(delta);
+		if (Vector2.distance(ball1.getPosition(), ball2.getPosition()) < 10f)
+			System.exit(0);
 	}
 
 	@Override
