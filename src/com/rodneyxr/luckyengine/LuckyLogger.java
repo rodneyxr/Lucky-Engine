@@ -1,5 +1,11 @@
 package com.rodneyxr.luckyengine;
 
+/**
+ * Helper class to enable easy logging to STDOUT
+ * 
+ * @author Rodney
+ *
+ */
 public class LuckyLogger {
 
 	private String name;
