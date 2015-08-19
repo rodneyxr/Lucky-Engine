@@ -1,4 +1,4 @@
-package core.tools;
+package com.rodneyxr.luckyengine.tools;
 
 import java.util.Scanner;
 

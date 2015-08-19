@@ -1,4 +1,4 @@
-package core.mvc;
+package com.rodneyxr.luckyengine.mvc;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -26,7 +26,7 @@ public class Input implements KeyListener {
 
 	@Override
 	public void keyTyped(KeyEvent k) {
-		 System.out.printf("KeyTyped: '%c'\n", k.getKeyChar());
+		System.out.printf("KeyTyped: '%c'\n", k.getKeyChar());
 	}
 
 }
