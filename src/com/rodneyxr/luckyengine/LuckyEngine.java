@@ -1,31 +1,37 @@
 package com.rodneyxr.luckyengine;
 
-import java.awt.Graphics;
-
-import javax.swing.JFrame;
-
-import com.rodneyxr.luckyengine.mvc.Input;
-import com.rodneyxr.luckyengine.mvc.Model;
-import com.rodneyxr.luckyengine.mvc.View;
+import javax.swing.*;
+import java.awt.*;
 
 /**
  * This class will handle all global operations such as FPS and logging.
- * 
- * @author Rodney
  *
+ * @author Rodney
  */
 public abstract class LuckyEngine implements Engine {
 
-	private static boolean debug = true;
+	/**
+	 * Logging
+	 */
 	public static final LuckyLogger LOGGER = new LuckyLogger("LuckyEngine", true);
-	public static final LuckyLogger DEVLOGGER = new LuckyLogger("DEBUG", debug);
+	public static final LuckyLogger DEVLOGGER = new LuckyLogger("DEBUG", true);
+
+	/**
+	 * Globals
+	 */
+	public static String APPLICATION_NAME = "Lucky Engine";
+
+	/**
+	 * Private
+	 */
+	private static boolean debug;
 
 	/**
 	 * MVC
 	 */
 	private Model model;
 	private View view;
-	private Input input;
+	private Controller input;
 
 	/**
 	 * Loop
@@ -59,7 +65,7 @@ public abstract class LuckyEngine implements Engine {
 		// setup MVC
 		model = new Model();
 		view = new View(this);
-		input = new Input(model, view);
+		input = new Controller(model, view);
 
 		// register listeners
 		view.registerListeners(input);
@@ -81,7 +87,6 @@ public abstract class LuckyEngine implements Engine {
 	}
 
 	/**
-	 * 
 	 * @return the frames per second
 	 */
 	public static int getFPS() {
@@ -89,7 +94,6 @@ public abstract class LuckyEngine implements Engine {
 	}
 
 	/**
-	 * 
 	 * @return the time in seconds between frames
 	 */
 	public static float getDeltaTime() {
@@ -98,7 +102,7 @@ public abstract class LuckyEngine implements Engine {
 
 	/**
 	 * If true, the Lucky Engine will log the FPS to stdout once a second
-	 * 
+	 *
 	 * @param logFPS
 	 */
 	public static void setLogFPS(boolean logFPS) {
@@ -107,7 +111,7 @@ public abstract class LuckyEngine implements Engine {
 
 	/**
 	 * If true, the Lucky Engine will enable debug output to stdout
-	 * 
+	 *
 	 * @param debug
 	 */
 	public static void setDebug(boolean debug) {

@@ -12,9 +12,9 @@ public class Ball {
 	private float size;
 	private Color color;
 
-	public Ball(float x, float y, float velocityX, float velocityY, float size, Color color) {
-		this.position = new Vector2(x, y);
-		this.velocity = new Vector2(velocityX, velocityY);
+	public Ball(Vector2 position, Vector2 velocity, float size, Color color) {
+		this.position = position;
+		this.velocity = velocity;
 		this.size = size;
 		this.color = color;
 	}
@@ -29,7 +29,7 @@ public class Ball {
 	}
 
 	public void update(float delta) {
-		position.add(velocity.x * delta, velocity.y * delta);
+//		position.add(velocity.x * delta, velocity.y * delta);
 	}
 
 	public void render(Graphics g) {

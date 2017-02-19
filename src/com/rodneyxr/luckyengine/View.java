@@ -1,14 +1,9 @@
-package com.rodneyxr.luckyengine.mvc;
+package com.rodneyxr.luckyengine;
 
-import java.awt.Graphics;
+import javax.swing.*;
+import java.awt.*;
 
-import javax.swing.JFrame;
-
-import com.rodneyxr.luckyengine.Application;
-import com.rodneyxr.luckyengine.GameScreen;
-import com.rodneyxr.luckyengine.LuckyEngine;
-
-public class View extends JFrame {
+final class View extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	private GameScreen gameScreen;
@@ -33,7 +28,7 @@ public class View extends JFrame {
 		gameScreen.repaint();
 	}
 
-	public void registerListeners(Input controller) {
+	public void registerListeners(Controller controller) {
 		gameScreen.addKeyListener(controller);
 	}
 }
